@@ -2,11 +2,11 @@ require File.expand_path("../../Abstract/abstract-php-extension", __FILE__)
 
 class Php71Stemmer < AbstractPhp71Extension
   init
-  desc "This stem extension for PHP provides stemming capability for a variety of languages."
+  desc "This stem extension for PHP."
   homepage "https://github.com/hthetiot/php-stemmer"
   url "https://github.com/hthetiot/php-stemmer/archive/160e2d6cbb2563ef4f07980f862c33e5b4c041c7.tar.gz"
-  sha256 "45708a8b0c1a4a0dc5b11e4b67fd04133e4f5757be29f3ff0081ed541270d6cb"
   version "160e2d6cbb"
+  sha256 "45708a8b0c1a4a0dc5b11e4b67fd04133e4f5757be29f3ff0081ed541270d6cb"
 
   bottle do
     cellar :any_skip_relocation
@@ -20,7 +20,7 @@ class Php71Stemmer < AbstractPhp71Extension
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}", phpconfig
-    system "make -C libstemmer_c"
+    system "make", "-C", "libstemmer_c"
     system "make"
     prefix.install "modules/stemmer.so"
     write_config_file if build.with? "config-file"
